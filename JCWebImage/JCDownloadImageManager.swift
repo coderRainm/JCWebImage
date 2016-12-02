@@ -82,6 +82,7 @@ class JCDownloadImageManager: NSObject {
         if !op.isCancelled {
             op.cancel()
         }
+        self.operationCache[urlString] = nil
     }
 }
 

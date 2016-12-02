@@ -24,6 +24,12 @@ extension UIImageView {
     }
     
     func jc_setImageWithURLString(urlString: String) -> Void {
+        //cancel previous request
+        if let str = self.currentURLString {
+            if str != urlString {
+                JCDownloadImageManager.sharedManager.cancelDownload(urlString: urlString)
+            }
+        }
         JCDownloadImageManager.sharedManager.downloadImageWithURLString(urlString: urlString, completeHandler: { (image: UIImage) -> Void in
             self.image = image
         })
